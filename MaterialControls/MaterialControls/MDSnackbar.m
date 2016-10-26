@@ -297,17 +297,15 @@ MDSnackbarManger *snackbarManagerInstance;
         [rootView layoutIfNeeded];
       }
       completion:^(BOOL finished) {
-        if (finished) {
-          isAnimating = false;
-          [self performDelegateAction:@selector(snackbarDidAppear:)];
+        isAnimating = false;
+        [self performDelegateAction:@selector(snackbarDidAppear:)];
 
-            if(_duration > 0)
+        if(_duration > 0)
           [self performSelector:@selector(dismiss)
                      withObject:nil
                      afterDelay:_duration];
 
-          actionButton.enabled = true;
-        }
+        actionButton.enabled = true;
       }];
 }
 
@@ -385,14 +383,12 @@ MDSnackbarManger *snackbarManagerInstance;
         [rootView layoutIfNeeded];
       }
       completion:^(BOOL finished) {
-        if (finished) {
-          isAnimating = false;
-          [self performDelegateAction:@selector(snackbarDidDisappear:)];
-          [self removeFromSuperview];
-          [textLabel removeFromSuperview];
-          [actionButton removeFromSuperview];
-          _isShowing = false;
-        }
+        isAnimating = false;
+        [self performDelegateAction:@selector(snackbarDidDisappear:)];
+        [self removeFromSuperview];
+        [textLabel removeFromSuperview];
+        [actionButton removeFromSuperview];
+        _isShowing = false;
       }];
 }
 
